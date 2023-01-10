@@ -7,8 +7,6 @@ Este desafio é uma parte do processo de seleção da [Birdie](http://birdie.ai)
 
 Nosso cliente Joãozinho LTDA, solicitou para a Birdie a implementação de um produto onde seria possivel visualizar uma listagem de todos os feedback que ele vem recebendo de seus clientes. Nessa listagem nosso cliente gostaria de visualizar, buscar e percorrer por todos os feedbacks. Além disso gostaria de conseguir criar uma tag dentro de um feedback de determinado cliente para facilitar consultas. 
 
-A ideia das tags seria mais ou menos assim: [Figma Link](https://www.figma.com/file/22NosjNQDP6Ica42cUgPgX/Frontend-Test?node-id=0%3A1&t=IqY64y8vEWtra6KZ-1)
-
 **Feedback:** O seu produto é muito bom, mas infelizmente a bateria de vocês dura
 por tempo.
 
@@ -16,6 +14,7 @@ por tempo.
 
 Neste repositório você encontrará um arquivo json contendo o payload que deve ser utilizado para implementação desse teste.
 
+Aqui está o protótipo da tela esperada: [Figma Link](https://www.figma.com/file/22NosjNQDP6Ica42cUgPgX/Frontend-Test?node-id=0%3A1&t=IqY64y8vEWtra6KZ-1)
 
 ## O que esperamos?
 
