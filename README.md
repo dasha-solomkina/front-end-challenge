@@ -28,9 +28,8 @@ O seu objetivo nesse teste é entregar as funcionalidades solicitadas pelo nosso
 - Jest
 - ESLint
 - Yarn
-- Storybook
 - TypeScript
-- Stiches
+- Stitches
 - Radix UI
 - Zustand
 - Figma
