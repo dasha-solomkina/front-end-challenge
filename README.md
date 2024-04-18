@@ -29,9 +29,9 @@ To search for data, we provide a REST API at the following address:
 
 Search params:
 
--  `search`: text search (default: `""`)
--  `page`: current page (default: `0`)
--  `pageSize`: feedback per page (default: `25`)
+- `search`: text search (default: `""`)
+- `page`: current page (default: `0`)
+- `pageSize`: feedback per page (default: `25`)
 
 Example response:
 
