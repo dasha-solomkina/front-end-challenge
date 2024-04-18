@@ -108,7 +108,7 @@ Your goal in this test is to deliver the page requested by our client with the g
 - Clone the fork to your machine.
 - Create a frontend folder and develop your software inside it.
 - Create a README.md in your repository describing the steps to run your project.
-- Once completed, Open an issue in this repository with the title '[FRONT End Challenge] {{Your name}}'.
+- Once completed, Open an issue in this repository with the title '[Front End Challenge] {{Your name}}'.
 - In the issue content, make any comments about how your experience was in running the test (suggestions, compliments, criticisms, etc.).
 
 
