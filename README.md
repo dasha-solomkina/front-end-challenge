@@ -1,27 +1,27 @@
-# Desafio Front End
+# Front End Challenge
 
-Este desafio é uma parte do processo de seleção da [Birdie](http://birdie.ai) e foi criado afim de avaliar as habilidades dos candidatos para usar tecnologias da Web (Frontend) e abrange as áreas de design e conhecimento básico de tecnologias da Web. Esperamos que um desenvolvedor front-end seja especializado no desenvolvimento da interface do usuário (UI) de aplicativos da Web e que estejam em harmonia e colaboração com designers e outros desenvolvedores para garantir que a interface seja visualmente atraente, intuitiva, simples, responsiva e fluida.
+This challenge is part of the Birdie: [http://birdie.ai](http://birdie.ai) selection process and was created to assess the skills of candidates to use Web technologies (Frontend) and covers the areas of design and basic knowledge of Web technologies. We expect a front-end developer to be specialized in the development of the user interface (UI) of Web applications and to be in harmony and collaboration with designers and other developers to ensure that the interface is visually attractive, intuitive, simple, responsive and fluid.
 
-## Tela de Feedback
+## Feedback Screen
 
-Nosso cliente Joãozinho LTDA, solicitou para a Birdie a implementação de um produto onde seria possivel visualizar uma listagem de todos os feedback que ele vem recebendo de seus clientes além de um gráfico que mostra o volume desses feedback por mês. Nessa listagem nosso cliente gostaria de visualizar, buscar e percorrer por todos os feedbacks. Ele também gostaria de conseguir criar uma tag dentro de um feedback de determinado cliente para facilitar consultas.
+Our client Dunder Mifflin requested Birdie to implement a product where it would be possible to view a list of all the feedback he has been receiving from his customers in addition to a graph that shows the volume of this feedback per month. In this list, our client would like to view, search and browse through all the feedback. He would also like to be able to create a tag within a feedback from a specific customer to facilitate queries.
 
-**Feedback:** O seu produto é muito bom, mas infelizmente a bateria de vocês dura
-por tempo.
+**Feedback:** Your product is very good, but unfortunately your battery lasts
+for a while.
 
-**Feedback com tag:** O seu `produto é muito bom`, mas infelizmente a `bateria` de vocês `não dura` muito tempo.
+**Feedback with tag:** Your `product is very good`, but unfortunately your `battery` `does not last` for a long time.
 
-Uma vez criada a tag no feedback, essa mesma tag pode aparecer em outros feedbacks com as mesmas palavras da tag. Por exemplo:
+Once the tag has been created in the feedback, the same tag can appear in other feedback with the same words as the tag. For example:
 
-**Feedback com tag:** A `bateria` desse produto é ótima.
+**Feedback with tag:** The `battery` of this product is great.
 
-Ele comentou que essa última feature pode ser entregue num outro sprint, mas ficaria feliz em ver funcionando nessa entrega.
+He commented that this last feature can be delivered in another sprint, but would be happy to see it working in this delivery.
 
-Aqui está o protótipo da tela esperada: [Figma Link](https://www.figma.com/file/22NosjNQDP6Ica42cUgPgX/Frontend-Test?node-id=0%3A1&t=IqY64y8vEWtra6KZ-1)
+Here is the prototype of the expected screen: Figma Link: [https://www.figma.com/file/22NosjNQDP6Ica42cUgPgX/Frontend-Test?node-id=0%3A1&t=IqY64y8vEWtra6KZ-1](https://www.figma.com/file/22NosjNQDP6Ica42cUgPgX/Frontend-Test?node-id=0%3A1&t=IqY64y8vEWtra6KZ-1)
 
 ## API
 
-Para buscar os dados, disponibilizamos uma API REST no seguinte endereço:
+To search for data, we provide a REST API at the following address:
 
 `https://frontend-challenge.birdie.workers.dev`
 
@@ -29,95 +29,95 @@ Para buscar os dados, disponibilizamos uma API REST no seguinte endereço:
 
 Search params:
 
--   `search`: busca textual (default: `""`)
--   `page`: página atual (default: `0`)
--   `pageSize`: feedback por página (default: `25`)
+-  `search`: text search (default: `""`)
+-  `page`: current page (default: `0`)
+-  `pageSize`: feedback per page (default: `25`)
 
-Exemplo de resposta:
+Example response:
 
 ```json
 {
-    "data": [
-        {
-            "text": "Replaced broken rear shock assembly now the other side broke. This whole unit was replaced once. The 2 boys riding both weigh less than 100 lbs",
-            "title": "Having troubles",
-            "posted_at": "2022-10-18 04:22:34.000000 UTC"
-        }
-    ],
-    "count": 1,
-    "nextPage": null,
-    "previousPage": null
+  "data": [
+    {
+      "text": "Replaced broken rear shock assembly now the other side broke. This whole unit was replaced once. The 2 boys riding both weigh less than 100 lbs",
+      "title": "Having troubles",
+      "posted_at": "2022-10-18 04:22:34.000000 UTC"
+    }
+  ],
+  "count": 1,
+  "nextPage": null,
+  "previousPage": null
 }
 ```
 
 ### GET /trendline
 
-Sem parâmetros.
+No parameters.
 
-Exemplo de resposta:
+Example response:
 
 ```json
 [
-    {
-        "date": "2022-01-01",
-        "count": 25
-    },
-    {
-        "date": "2022-02-01",
-        "count": "43"
-    },
-    {
-        "date": "2022-03-01",
-        "count": 38
-    }
+  {
+    "date": "2022-01-01",
+    "count": 25
+  },
+  {
+    "date": "2022-02-01",
+    "count": "43"
+  },
+  {
+    "date": "2022-03-01",
+    "count": 38
+  }
 ]
 ```
 
-## O que esperamos?
+## What do we expect?
 
-Esperamos pelo menos essas três funcionalidades abaixo:
+We expect at least these three functionalities below:
 
--   Página com UI semelhante ao do protótipo
--   Listagem de feedback com busca e paginação
--   Trendline do volume de feedback mês a mês
+-  Page with UI similar to the prototype
+-  Feedback listing with search and pagination
+-  Trendline of feedback volume month by month
 
-E vai ser melhor ainda se tiver:
+And it will be even better if it has:
 
--   Funcionalidade das tags
+-  Tag functionality
 
-O seu objetivo nesse teste é entregar a página solicitada pelo nosso cliente com a maior fluidez possivel, e para isso você pode utilizar a nossa stack (que seria um plus) ou outra de sua preferência.
+Your goal in this test is to deliver the page requested by our client with the greatest possible fluidity, and for that you can use our stack (which would be a plus) or another of your preference.
 
-## Stack de desenvolvimento
+## Development stack
 
--   React
--   Vite
--   Jest
--   ESLint
--   Yarn
--   TypeScript
--   Stitches
--   Radix UI
--   Zustand
--   ECharts
--   TanStack Query
--   Figma
+-  React
+-  Vite
+-  Jest
+-  ESLint
+-  Yarn
+-  TypeScript
+-  Stitches
+-  Radix UI
+-  Zustand
+-  ECharts
+-  TanStack Query
+-  Figma
 
-## Como participar?
+## How to participate?
 
--   Dê um fork neste repositório.
+-  Fork this repository.
 
--   Clone o fork na sua máquina.
+-  Clone the fork to your machine.
 
--   Crie uma pasta frontend e desenvolva seu software dentro dela.
+-  Create a frontend folder and develop your software inside it.
 
--   Crie em seu repositório um README.md descrevendo os passos para execução de seu projeto.
+-  Create a README.md in your repository describing the steps to run your project.
 
--   Assim que concluir, Abra uma issue neste repositório com o título '[DESAFIO Front End] {{Seu nome}}'.
+-  Once completed, Open an issue in this repository with the title '[FRONT End Challenge] {{Your name}}'.
 
--   No conteúdo da issue faça qualquer comentário sobre como foi sua experiência na execução do teste (sugestões, elogios, críticas, etc).
+-  In the issue content, make any comments about how your experience was in running the test (suggestions, compliments, criticisms, etc.).
 
-Assim que sua issue for aberta, alguém de nosso time técnico da Birdie irá analisar seu desafio, e eventualmente esteja preparado para defender a solução que construiu.
 
-Quanto mais informações tivermos no README.md, melhor conseguiremos te avaliar.
+Once your issue is open, a member of our Birdie technical team will analyze your challenge and may be prepared to defend the solution you have built.
+The more information we have in the README.md, the better we will be able to evaluate you.
 
-Aguardamos seu desafio, e boa sorte!
+We look forward to your challenge, and good luck!
