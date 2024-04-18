@@ -75,15 +75,17 @@ Exemplo de resposta:
 
 ## O que esperamos?
 
+Esperamos pelo menos essas três funcionalidades abaixo:
+
 -   Página com UI semelhante ao do protótipo
 -   Listagem de feedback com busca e paginação
 -   Trendline do volume de feedback mês a mês
 
-### Good to have:
+E vai ser melhor ainda se tiver:
 
 -   Funcionalidade das tags
 
-O seu objetivo nesse teste é entregar as funcionalidades solicitadas pelo nosso cliente com a maior fluidez possivel, e para isso você pode utilizar a nossa stack (que seria um plus) ou outra de sua preferência.
+O seu objetivo nesse teste é entregar a página solicitada pelo nosso cliente com a maior fluidez possivel, e para isso você pode utilizar a nossa stack (que seria um plus) ou outra de sua preferência.
 
 ## Stack de desenvolvimento
 
