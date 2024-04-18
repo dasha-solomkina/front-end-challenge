@@ -98,6 +98,8 @@ O seu objetivo nesse teste é entregar a página solicitada pelo nosso cliente c
 -   Stitches
 -   Radix UI
 -   Zustand
+-   ECharts
+-   TanStack Query
 -   Figma
 
 ## Como participar?
