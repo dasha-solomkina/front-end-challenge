@@ -1,6 +1,6 @@
 # Front End Challenge
 
-This challenge is part of the Birdie: [http://birdie.ai](http://birdie.ai) selection process and was created to assess the skills of candidates to use Web technologies (Frontend) and covers the areas of design and basic knowledge of Web technologies. We expect a front-end developer to be specialized in the development of the user interface (UI) of Web applications and to be in harmony and collaboration with designers and other developers to ensure that the interface is visually attractive, intuitive, simple, responsive and fluid.
+This challenge is part of the [Birdie](http://birdie.ai) selection process and was created to assess the skills of candidates to use Web technologies (Frontend) and covers the areas of design and basic knowledge of Web technologies. We expect a front-end developer to be specialized in the development of the user interface (UI) of Web applications and to be in harmony and collaboration with designers and other developers to ensure that the interface is visually attractive, intuitive, simple, responsive and fluid.
 
 ## Feedback Screen
 
