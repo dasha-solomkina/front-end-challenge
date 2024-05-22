@@ -1,6 +1,6 @@
 import * as echarts from 'echarts';
 import { useEffect, useState } from 'react';
-import fetchGraphArray, { GraphDataProps } from '../store/data.ts';
+import fetchGraphArray, { GraphDataProps } from '../store/dataGraph.ts';
 
 export default function Chart() {
   const [fetchedGraphArray, setFetchedGraphArray] = useState<
