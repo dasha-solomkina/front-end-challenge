@@ -27,6 +27,7 @@ export default function FeedbackList() {
         ? fetchedFeedback.data.map((feedback) => {
             return (
               <Feedback
+                key={feedback.posted_at}
                 posted_at={feedback.posted_at}
                 title={feedback.title}
                 text={feedback.text}
