@@ -14,7 +14,7 @@ export type FeedbackListProps = {
 export default async function fetchFeedbackList(): Promise<FeedbackListProps> {
   try {
     const response = await fetch(
-      'https://frontend-challenge.birdie.workers.dev/feedback',
+      'https://frontend-challenge.birdie.workers.dev/feedback?pageSize=10',
       {
         mode: 'cors',
       }
