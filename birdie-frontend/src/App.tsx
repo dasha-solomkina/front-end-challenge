@@ -1,17 +1,13 @@
 import Chart from './components/Chart';
 import Search from './components/Search';
-import Feedback from './components/Feedback';
+import FeedbackList from './components/FeedbackList';
 
 function App() {
   return (
     <>
       <Chart />
       <Search />
-      <div>
-        <Feedback />
-        <Feedback />
-        <Feedback />
-      </div>
+      <FeedbackList />
     </>
   );
 }
