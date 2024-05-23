@@ -78,7 +78,7 @@ export default function Chart() {
             type: 'none',
           },
           formatter: `<div style="font-family: Inter; font-size: 12px; line-height: 1.6; color: #666666;">
-          {b} <br /><span style="font-family: Inter; font-size: 12px; font-weight: 400; color: #000000;">{c} feedback records</span> </div>`,
+          {b} <br /><span style=" font-weight: 400; color: #000000;">{c} feedback records</span> </div>`,
         },
         grid: {
           left: '5%',
@@ -94,15 +94,16 @@ export default function Chart() {
             smooth: true,
             lineStyle: {
               color: '#7a8ad1',
-              width: 2.5,
+              width: 3,
             },
             showSymbol: false,
+            symbolSize: 14,
             emphasis: {
               focus: 'series',
               itemStyle: {
                 color: '#7a8ad1',
-                borderColor: '#7a8ad1',
-                borderWidth: 5,
+                borderColor: '#ffffff',
+                borderWidth: 2,
               },
             },
           },

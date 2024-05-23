@@ -8,8 +8,8 @@ function App() {
     <>
       <Chart />
       <Search />
-      <FeedbackList />
       <Pagination />
+      <FeedbackList />
     </>
   );
 }
