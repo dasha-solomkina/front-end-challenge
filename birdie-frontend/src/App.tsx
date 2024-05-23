@@ -1,6 +1,7 @@
 import Chart from './components/Chart';
 import Search from './components/Search';
 import FeedbackList from './components/FeedbackList';
+import Pagination from './components/Pagination';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Chart />
       <Search />
       <FeedbackList />
+      <Pagination />
     </>
   );
 }

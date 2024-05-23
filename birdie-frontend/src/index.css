@@ -101,3 +101,39 @@ p {
   gap: 10px;
   width: 90%;
 }
+
+.pagination {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.pagination p {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.page-back-btn.active,
+.page-forward-btn.active {
+  background-color: white;
+  border: 1px solid #05495f;
+  padding: 6px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  color: #05495f;
+}
+
+.page-back-btn,
+.page-forward-btn {
+  background-color: white;
+  border: 1px solid #343a408c;
+  color: #343a408c;
+  padding: 6px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+}
+
+button.active:hover {
+  cursor: pointer;
+  background-color: #dfdfdf42;
+}
