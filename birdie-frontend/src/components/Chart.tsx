@@ -6,7 +6,6 @@ export default function Chart() {
   const [fetchedGraphArray, setFetchedGraphArray] = useState<
     GraphDataProps[] | null
   >(null);
-  //   const [loading, setLoading] = useState(true); // TODO: implement later
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,9 +15,6 @@ export default function Chart() {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-      //   finally {
-      //     setLoading(false);
-      //   }
     };
     fetchData();
   }, []);
@@ -121,7 +117,12 @@ export default function Chart() {
   return (
     <div className="header">
       <h1>User feedback</h1>
-      <div id="main"></div>
+      <div id="main">
+        <div className="loading">
+          <div className="loading-img"></div>
+          <p className="loading-message">Loading...</p>
+        </div>
+      </div>
     </div>
   );
 }

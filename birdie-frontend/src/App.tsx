@@ -16,7 +16,7 @@ function App() {
     useState<FeedbackListProps | null>(null);
 
   useEffect(() => {
-    const url = `https://frontend-challenge.birdie.workers.dev/feedback?pageSize=100&page=${pageNumber}`;
+    const url = `https://frontend-challenge.birdie.workers.dev/feedback?pageSize=10&page=${pageNumber}&search=${search}`;
     const fetchData = async () => {
       try {
         const data = await fetchFeedbackList(url);
@@ -28,20 +28,19 @@ function App() {
           ...data,
           data: feedbackWithId,
         });
-        // setFetchedFeedback(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
     fetchData();
-  }, [pageNumber]);
+  }, [pageNumber, search]);
 
   function handleNextPage() {
     const buttonPrev = document.querySelector('.page-back-btn');
     buttonPrev?.classList.add('active');
     if (
       fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / 100) - fetchedFeedback.nextPage === 1
+      Math.ceil(fetchedFeedback.count / 10) - fetchedFeedback.nextPage === 1
     ) {
       const buttonForward = document.querySelector('.page-forward-btn');
       buttonForward?.classList.remove('active');
@@ -49,7 +48,7 @@ function App() {
     }
     if (
       fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / 100) - fetchedFeedback.nextPage > 1
+      Math.ceil(fetchedFeedback.count / 10) - fetchedFeedback.nextPage > 1
     ) {
       setPageNumber((prevPage) => prevPage + 1);
     }
