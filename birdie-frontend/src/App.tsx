@@ -44,18 +44,28 @@ function App() {
     fetchData();
   }, [pageNumber, search, pageSize]);
 
-  function handleNextPage() {
+  useEffect(() => {
+    const buttonForward = document.querySelector('.page-forward-btn');
     const buttonPrev = document.querySelector('.page-back-btn');
-    buttonPrev?.classList.add('active');
-    if (
+
+    if (fetchedFeedback && fetchedFeedback.count / pageSize < 1) {
+      buttonForward?.classList.remove('active');
+      buttonPrev?.classList.remove('active');
+    } else if (
       fetchedFeedback?.nextPage &&
       Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage ===
         1
     ) {
-      const buttonForward = document.querySelector('.page-forward-btn');
       buttonForward?.classList.remove('active');
-      setPageNumber((prevPage) => prevPage + 1);
+    } else if (fetchedFeedback && fetchedFeedback.previousPage == null) {
+      buttonPrev?.classList.remove('active');
+    } else {
+      buttonForward?.classList.add('active');
+      buttonPrev?.classList.add('active');
     }
+  }, [fetchedFeedback, pageSize]);
+
+  function handleNextPage() {
     if (
       fetchedFeedback?.nextPage &&
       Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage > 1
@@ -65,20 +75,14 @@ function App() {
   }
 
   function handlePreviousPage() {
-    const buttonForward = document.querySelector('.page-forward-btn');
-    buttonForward?.classList.add('active');
-
     if (fetchedFeedback && fetchedFeedback.previousPage !== null) {
       setPageNumber((prevPage) => prevPage - 1);
-    }
-    if (fetchedFeedback && fetchedFeedback.previousPage == 0) {
-      const buttonPrev = document.querySelector('.page-back-btn');
-      buttonPrev?.classList.remove('active');
     }
   }
 
   function handleSearch(inputValue: string) {
     setSearch(inputValue);
+    setPageNumber(0);
   }
 
   return (
@@ -99,12 +103,6 @@ function App() {
           <p className="loading-message">Loading...</p>
         </div>
       )}
-      {/* <Pagination
-        page={pageNumber}
-        handleNextPage={handleNextPage}
-        handlePreviousPage={handlePreviousPage}
-      /> */}
-      {/* when adding the second pagination - adjust the styling */}
     </>
   );
 }
