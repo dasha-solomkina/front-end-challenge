@@ -2,6 +2,7 @@ export type FeedbackDataProps = {
   text: string;
   title: string;
   posted_at: string;
+  id: string;
 };
 
 export type FeedbackListProps = {
@@ -11,14 +12,13 @@ export type FeedbackListProps = {
   previousPage: number | null;
 };
 
-export default async function fetchFeedbackList(): Promise<FeedbackListProps> {
+export default async function fetchFeedbackList(
+  url: string
+): Promise<FeedbackListProps> {
   try {
-    const response = await fetch(
-      'https://frontend-challenge.birdie.workers.dev/feedback?pageSize=10',
-      {
-        mode: 'cors',
-      }
-    );
+    const response = await fetch(url, {
+      mode: 'cors',
+    });
 
     if (!response.ok) {
       throw new Error(

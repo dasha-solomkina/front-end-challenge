@@ -1,9 +1,23 @@
-export default function Pagination() {
+type PaginationProps = {
+  page: number;
+  handlePreviousPage: () => void;
+  handleNextPage: () => void;
+};
+
+export default function Pagination({
+  page,
+  handlePreviousPage,
+  handleNextPage,
+}: PaginationProps) {
   return (
     <div className="pagination">
-      <button className="page-back-btn active">&lt;</button>
-      <p>5</p>
-      <button className="page-forward-btn active">&gt;</button>
+      <button onClick={handlePreviousPage} className="page-back-btn">
+        &lt;
+      </button>
+      <p>{page}</p>
+      <button onClick={handleNextPage} className="page-forward-btn active">
+        &gt;
+      </button>
     </div>
   );
 }

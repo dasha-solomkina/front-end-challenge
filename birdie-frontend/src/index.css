@@ -110,30 +110,62 @@ p {
 
 .pagination p {
   font-size: 1.1rem;
-  font-weight: 700;
+  color: #5c6369;
+  /* font-weight: 700; */
 }
 
 .page-back-btn.active,
 .page-forward-btn.active {
   background-color: white;
-  border: 1px solid #05495f;
-  padding: 6px 20px;
-  font-size: 1.1rem;
+  border: 1px solid #6c757dbb;
+  padding: 2px 10px;
   border-radius: 8px;
-  color: #05495f;
+  font-weight: 600;
+  color: #6c757d;
 }
 
 .page-back-btn,
 .page-forward-btn {
   background-color: white;
-  border: 1px solid #343a408c;
+  border: 1px solid #e9ecef;
   color: #343a408c;
-  padding: 6px 20px;
-  font-size: 1.1rem;
+  padding: 2px 10px;
   border-radius: 8px;
 }
 
 button.active:hover {
   cursor: pointer;
   background-color: #dfdfdf42;
+}
+
+.loading-img {
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  border-color: rgb(5, 73, 95) rgb(5, 73, 95) rgb(5, 73, 95) transparent;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-message {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

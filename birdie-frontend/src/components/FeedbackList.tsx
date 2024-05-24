@@ -1,40 +1,26 @@
 import Feedback from './Feedback';
-import { useEffect, useState } from 'react';
-import fetchFeedbackList, { FeedbackListProps } from '../store/dataFeedback';
+import { FeedbackDataProps } from '../store/dataFeedback.ts';
 
-export default function FeedbackList() {
-  const [fetchedFeedback, setFetchedFeedback] =
-    useState<FeedbackListProps | null>(null);
+export type FeedbackListProps = {
+  fetchedFeedbackArray: FeedbackDataProps[];
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchFeedbackList();
-        setFetchedFeedback(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-      //   finally {
-      //     setLoading(false);
-      //   }
-    };
-    fetchData();
-  }, []);
-
+export default function FeedbackList({
+  fetchedFeedbackArray,
+}: FeedbackListProps) {
   return (
     <div className="feedback-list">
-      {fetchedFeedback
-        ? fetchedFeedback.data.map((feedback) => {
-            return (
-              <Feedback
-                key={feedback.posted_at}
-                posted_at={feedback.posted_at}
-                title={feedback.title}
-                text={feedback.text}
-              />
-            );
-          })
-        : 'ops'}
+      {fetchedFeedbackArray.map((feedback) => {
+        return (
+          <Feedback
+            key={feedback.id}
+            id={feedback.id}
+            posted_at={feedback.posted_at}
+            title={feedback.title}
+            text={feedback.text}
+          />
+        );
+      })}
     </div>
   );
 }
