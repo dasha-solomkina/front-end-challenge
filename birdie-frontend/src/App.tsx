@@ -7,16 +7,25 @@ import fetchFeedbackList, {
   FeedbackListProps,
 } from '../src/store/dataFeedback.ts';
 import { v4 as uuidv4 } from 'uuid';
+import FeedbackPerPage from './components/FeedbckPerPage.tsx';
 
 function App() {
   const [search, setSearch] = useState<string>('');
   const [pageNumber, setPageNumber] = useState<number>(0);
+  const [pageSize, setPageSize] = useState<number>(10);
+
+  function handlePageSize(num: number) {
+    setPageSize(num);
+    setPageNumber(0);
+    const buttonPrev = document.querySelector('.page-back-btn');
+    buttonPrev?.classList.remove('active');
+  }
 
   const [fetchedFeedback, setFetchedFeedback] =
     useState<FeedbackListProps | null>(null);
 
   useEffect(() => {
-    const url = `https://frontend-challenge.birdie.workers.dev/feedback?pageSize=10&page=${pageNumber}&search=${search}`;
+    const url = `https://frontend-challenge.birdie.workers.dev/feedback?pageSize=${pageSize}&page=${pageNumber}&search=${search}`;
     const fetchData = async () => {
       try {
         const data = await fetchFeedbackList(url);
@@ -33,14 +42,15 @@ function App() {
       }
     };
     fetchData();
-  }, [pageNumber, search]);
+  }, [pageNumber, search, pageSize]);
 
   function handleNextPage() {
     const buttonPrev = document.querySelector('.page-back-btn');
     buttonPrev?.classList.add('active');
     if (
       fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / 10) - fetchedFeedback.nextPage === 1
+      Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage ===
+        1
     ) {
       const buttonForward = document.querySelector('.page-forward-btn');
       buttonForward?.classList.remove('active');
@@ -48,7 +58,7 @@ function App() {
     }
     if (
       fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / 10) - fetchedFeedback.nextPage > 1
+      Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage > 1
     ) {
       setPageNumber((prevPage) => prevPage + 1);
     }
@@ -89,6 +99,7 @@ function App() {
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
       />
+      <FeedbackPerPage handlePageSize={handlePageSize} />
       {fetchedFeedback ? (
         <FeedbackList fetchedFeedbackArray={fetchedFeedback.data} />
       ) : (
@@ -97,6 +108,12 @@ function App() {
           <p className="loading-message">Loading...</p>
         </div>
       )}
+      {/* <Pagination
+        page={pageNumber}
+        handleNextPage={handleNextPage}
+        handlePreviousPage={handlePreviousPage}
+      /> */}
+      {/* when adding the second pagination - adjust the styling */}
     </>
   );
 }
