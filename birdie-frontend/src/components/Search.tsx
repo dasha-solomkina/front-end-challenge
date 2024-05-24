@@ -1,18 +1,26 @@
 type SearchProps = {
-  search: string;
-  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearch: (inputValue: string) => void;
 };
 
-export default function Search({ search, handleInput }: SearchProps) {
+import { useState } from 'react';
+
+export default function Search({ handleSearch }: SearchProps) {
+  const [typedInput, setTypedInput] = useState<string>('');
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSearch(typedInput);
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="search-bar">
         <img src="src/assets/search.png" alt="" />
         <input
-          value={search}
+          value={typedInput}
           type="text"
           placeholder="Search to discover"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => setTypedInput(e.target.value)}
         />
       </div>
       <button type="submit" className="search-btn">

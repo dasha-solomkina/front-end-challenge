@@ -114,6 +114,8 @@ p {
 .pagination p {
   font-size: 1.1rem;
   color: #5c6369;
+  width: 30px;
+  text-align: center;
   /* font-weight: 700; */
 }
 

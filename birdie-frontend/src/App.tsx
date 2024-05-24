@@ -77,23 +77,14 @@ function App() {
     }
   }
 
-  // function handleSearch(e: React.FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-
-  // }
-
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(e.target.value);
+  function handleSearch(inputValue: string) {
+    setSearch(inputValue);
   }
 
   return (
     <>
       <Chart />
-      <Search
-        // onSubmit={handle Search}
-        handleInput={handleInput}
-        search={search}
-      />
+      <Search handleSearch={handleSearch} />
       <Pagination
         page={pageNumber}
         handleNextPage={handleNextPage}
