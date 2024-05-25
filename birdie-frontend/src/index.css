@@ -163,14 +163,25 @@ button.active:hover {
   }
 }
 
-.loading-message {
+.loading-message,
+.notfound-title {
   font-size: 1.3rem;
   margin-top: 15px;
   font-weight: 600;
+  color: #05495f;
 }
 
-.loading {
+.loading,
+.notfound-group {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#notfound-img {
+  width: 350px;
+  height: auto;
+}
+.highlight-button-container {
+  position: absolute;
 }

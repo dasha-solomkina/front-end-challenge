@@ -8,6 +8,7 @@ import fetchFeedbackList, {
 } from '../src/store/dataFeedback.ts';
 import { v4 as uuidv4 } from 'uuid';
 import FeedbackPerPage from './components/FeedbckPerPage.tsx';
+import AddTagBtn from './components/AddTagBtn.tsx';
 
 function App() {
   const [search, setSearch] = useState<string>('');
@@ -51,17 +52,22 @@ function App() {
     if (fetchedFeedback && fetchedFeedback.count / pageSize < 1) {
       buttonForward?.classList.remove('active');
       buttonPrev?.classList.remove('active');
-    } else if (
+    }
+    if (fetchedFeedback && fetchedFeedback.previousPage == null) {
+      buttonPrev?.classList.remove('active');
+    }
+    if (fetchedFeedback && fetchedFeedback.nextPage !== null) {
+      buttonForward?.classList.add('active');
+    }
+    if (fetchedFeedback && fetchedFeedback.previousPage !== null) {
+      buttonPrev?.classList.add('active');
+    }
+    if (
       fetchedFeedback?.nextPage &&
       Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage ===
         1
     ) {
       buttonForward?.classList.remove('active');
-    } else if (fetchedFeedback && fetchedFeedback.previousPage == null) {
-      buttonPrev?.classList.remove('active');
-    } else {
-      buttonForward?.classList.add('active');
-      buttonPrev?.classList.add('active');
     }
   }, [fetchedFeedback, pageSize]);
 
@@ -85,6 +91,44 @@ function App() {
     setPageNumber(0);
   }
 
+  const [tags, setTags] = useState<(string | number)[]>([]); // change to string
+  const [buttonVisible, setButtonVisible] = useState<boolean>(false);
+  const [buttonPosition, setButtonPosition] = useState<{
+    top: number;
+    left: number;
+  }>({ top: 0, left: 0 });
+  const [highlightedText, setHighlightedText] = useState<string>('');
+
+  function handleAddTag() {
+    const newTagsArr = [...tags, highlightedText];
+    setTags(newTagsArr);
+    setButtonVisible(false);
+  }
+
+  useEffect(() => {
+    const handleMouse = () => {
+      const selection = window.getSelection();
+
+      if (selection && selection.rangeCount > 0 && !selection.isCollapsed) {
+        const range = selection.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        setHighlightedText(selection.toString());
+        setButtonPosition({
+          left: rect.left + window.scrollX,
+          top: rect.top + window.scrollY,
+        });
+        setButtonVisible(true);
+      } else {
+        setButtonVisible(false);
+      }
+
+      return () => {
+        document.removeEventListener('mouseup', handleMouse);
+      };
+    };
+    document.addEventListener('mouseup', handleMouse);
+  }, []);
+
   return (
     <>
       <Chart />
@@ -94,7 +138,14 @@ function App() {
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
       />
+      {tags}
       <FeedbackPerPage handlePageSize={handlePageSize} />
+      <AddTagBtn
+        buttonVisible={buttonVisible}
+        buttonPosition={buttonPosition}
+        handleAddTag={handleAddTag}
+      />
+
       {fetchedFeedback ? (
         <FeedbackList fetchedFeedbackArray={fetchedFeedback.data} />
       ) : (
@@ -102,6 +153,18 @@ function App() {
           <div className="loading-img"></div>
           <p className="loading-message">Loading...</p>
         </div>
+      )}
+      {fetchedFeedback?.data.length === 0 ? (
+        <div className="notfound-group">
+          <img id="notfound-img" src="src/assets/noresult.png" alt="" />
+          <span className="notfound-title">No results found.</span>
+          <span className="notfound-text">
+            Make sure you've written your search correctly or review your
+            filters selected.
+          </span>
+        </div>
+      ) : (
+        ''
       )}
     </>
   );
