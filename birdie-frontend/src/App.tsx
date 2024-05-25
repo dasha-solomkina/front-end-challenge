@@ -9,6 +9,8 @@ import fetchFeedbackList, {
 import { v4 as uuidv4 } from 'uuid';
 import FeedbackPerPage from './components/FeedbckPerPage.tsx';
 import AddTagBtn from './components/AddTagBtn.tsx';
+import TagsList from './components/TagsList.tsx';
+import { TagProps } from './components/Tag.tsx';
 
 function App() {
   const [search, setSearch] = useState<string>('');
@@ -91,7 +93,7 @@ function App() {
     setPageNumber(0);
   }
 
-  const [tags, setTags] = useState<(string | number)[]>([]); // change to string
+  const [tags, setTags] = useState<TagProps[]>([]);
   const [buttonVisible, setButtonVisible] = useState<boolean>(false);
   const [buttonPosition, setButtonPosition] = useState<{
     top: number;
@@ -100,7 +102,8 @@ function App() {
   const [highlightedText, setHighlightedText] = useState<string>('');
 
   function handleAddTag() {
-    const newTagsArr = [...tags, highlightedText];
+    const newTag = { text: highlightedText, color: 'red', id: uuidv4() };
+    const newTagsArr = [...tags, newTag];
     setTags(newTagsArr);
     setButtonVisible(false);
   }
@@ -138,7 +141,7 @@ function App() {
         handleNextPage={handleNextPage}
         handlePreviousPage={handlePreviousPage}
       />
-      {tags}
+      <TagsList tagsArray={tags} />
       <FeedbackPerPage handlePageSize={handlePageSize} />
       <AddTagBtn
         buttonVisible={buttonVisible}
