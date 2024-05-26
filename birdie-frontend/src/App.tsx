@@ -13,7 +13,7 @@ import FeedbackPerPage from './components/FeedbckPerPage.tsx';
 import AddTagBtn from './components/AddTagBtn.tsx';
 import TagsList from './components/TagsList.tsx';
 import { TagProp } from './components/Tag.tsx';
-import ImgNotFound from 'src/assets/noresult.png';
+import ImgNotFound from './assets/noresult.png';
 
 function App() {
   const [search, setSearch] = useState<string>('');
