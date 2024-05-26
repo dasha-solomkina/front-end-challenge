@@ -111,22 +111,51 @@ p {
   align-items: center;
 }
 
+.feedback-per-page {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.feedback-per-page button {
+  width: 40px;
+  border: none;
+  padding: 6px 10px;
+
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.feedback-per-page button:hover {
+  cursor: pointer;
+}
+
+.feedback-per-page button.active {
+  background-color: #05495f;
+  color: white;
+}
+
 .pagination p {
   font-size: 1.1rem;
   color: #5c6369;
   width: 30px;
   text-align: center;
-  /* font-weight: 700; */
+}
+
+.pages-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .page-back-btn.active,
 .page-forward-btn.active {
-  background-color: white;
-  border: 1px solid #6c757dbb;
+  background-color: #05495f;
+  border: 1px solid #05495f;
   padding: 2px 10px;
   border-radius: 8px;
   font-weight: 600;
-  color: #6c757d;
+  color: white;
 }
 
 .page-back-btn,
@@ -140,7 +169,6 @@ p {
 
 button.active:hover {
   cursor: pointer;
-  background-color: #dfdfdf42;
 }
 
 .loading-img {
@@ -184,4 +212,45 @@ button.active:hover {
 }
 .highlight-button-container {
   position: absolute;
+}
+
+.tags-list {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border: none;
+  border-radius: 8px;
+}
+
+.delete-tag-btn {
+  background-color: transparent;
+  border: none;
+  font-family: 'Inter';
+  font-weight: 500;
+}
+
+.delete-tag-btn:hover {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.tag-in-text {
+  border-radius: 4px;
+  border: none;
+}
+
+span {
+  border-radius: 2px;
+  border: none;
 }

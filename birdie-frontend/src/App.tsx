@@ -10,7 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 import FeedbackPerPage from './components/FeedbckPerPage.tsx';
 import AddTagBtn from './components/AddTagBtn.tsx';
 import TagsList from './components/TagsList.tsx';
-import { TagProps } from './components/Tag.tsx';
+import { TagProp } from './components/Tag.tsx';
+import { COLORS, getRandomColor } from './store/colors.ts';
 
 function App() {
   const [search, setSearch] = useState<string>('');
@@ -93,19 +94,61 @@ function App() {
     setPageNumber(0);
   }
 
-  const [tags, setTags] = useState<TagProps[]>([]);
+  function handleSearchByTag(inputValue: string, id: string) {
+    if (activeSearchTag === '') {
+      setSearch(inputValue);
+      setPageNumber(0);
+      setActiveSearchTag(id);
+    } else if (activeSearchTag === id) {
+      setSearch('');
+      setPageNumber(0);
+      setActiveSearchTag('');
+    } else {
+      setSearch(inputValue);
+      setPageNumber(0);
+      setActiveSearchTag(id);
+    }
+  }
+
+  const [tags, setTags] = useState<TagProp[]>([]);
   const [buttonVisible, setButtonVisible] = useState<boolean>(false);
   const [buttonPosition, setButtonPosition] = useState<{
     top: number;
     left: number;
   }>({ top: 0, left: 0 });
   const [highlightedText, setHighlightedText] = useState<string>('');
+  const [availableColors, setAvailableColors] = useState<string[]>(
+    COLORS.slice()
+  );
+  const [activeSearchTag, setActiveSearchTag] = useState<string>('');
 
   function handleAddTag() {
-    const newTag = { text: highlightedText, color: 'red', id: uuidv4() };
+    let color;
+    if (availableColors.length > 0) {
+      color = availableColors.pop()!;
+    } else {
+      color = getRandomColor();
+    }
+
+    const newTag = {
+      text: highlightedText,
+      color: color,
+      id: uuidv4(),
+    };
     const newTagsArr = [...tags, newTag];
     setTags(newTagsArr);
     setButtonVisible(false);
+  }
+
+  function handleDeleteTag(id: string) {
+    const updatedTags = tags.filter((tag) => tag.id !== id);
+    setTags(updatedTags);
+
+    // If a tag is deleted, its color can be reused
+    const deletedTag = tags.find((tag) => tag.id === id);
+    if (deletedTag) {
+      setAvailableColors((prevColors) => [...prevColors, deletedTag.color]);
+    }
   }
 
   useEffect(() => {
@@ -136,13 +179,21 @@ function App() {
     <>
       <Chart />
       <Search handleSearch={handleSearch} />
-      <Pagination
-        page={pageNumber}
-        handleNextPage={handleNextPage}
-        handlePreviousPage={handlePreviousPage}
+      <div className="pages-block">
+        <Pagination
+          page={pageNumber}
+          handleNextPage={handleNextPage}
+          handlePreviousPage={handlePreviousPage}
+        />
+        <FeedbackPerPage handlePageSize={handlePageSize} />
+      </div>
+
+      <TagsList
+        activeSearchTag={activeSearchTag}
+        handleSearchByTag={handleSearchByTag}
+        handleDeleteTag={handleDeleteTag}
+        tagsArray={tags}
       />
-      <TagsList tagsArray={tags} />
-      <FeedbackPerPage handlePageSize={handlePageSize} />
       <AddTagBtn
         buttonVisible={buttonVisible}
         buttonPosition={buttonPosition}
@@ -150,7 +201,7 @@ function App() {
       />
 
       {fetchedFeedback ? (
-        <FeedbackList fetchedFeedbackArray={fetchedFeedback.data} />
+        <FeedbackList fetchedFeedbackArray={fetchedFeedback.data} tags={tags} />
       ) : (
         <div className="loading">
           <div className="loading-img"></div>
