@@ -11,12 +11,14 @@ export default function TagsList({
   tagsArray,
   handleDeleteTag,
   handleSearchByTag,
+  activeSearchTag,
 }: TagsListProps) {
   return (
     <div className="tags-list">
       {tagsArray.map((tag) => {
         return (
           <Tag
+            activeSearchTag={activeSearchTag}
             handleSearchByTag={handleSearchByTag}
             handleDeleteTag={handleDeleteTag}
             key={tag.id}

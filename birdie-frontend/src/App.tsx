@@ -123,6 +123,12 @@ function App() {
   const [activeSearchTag, setActiveSearchTag] = useState<string>('');
 
   function handleAddTag() {
+    const existingTag = tags.find((tag) => tag.text === highlightedText);
+
+    if (existingTag) {
+      alert('Tag already exists');
+      return;
+    }
     let color;
     if (availableColors.length > 0) {
       color = availableColors.pop()!;

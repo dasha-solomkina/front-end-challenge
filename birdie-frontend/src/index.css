@@ -233,6 +233,14 @@ button.active:hover {
   border-radius: 8px;
 }
 
+.tag:hover {
+  cursor: pointer;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
 .delete-tag-btn {
   background-color: transparent;
   border: none;
