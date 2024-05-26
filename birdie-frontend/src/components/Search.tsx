@@ -24,7 +24,7 @@ export default function Search({ handleSearch }: SearchProps) {
         />
       </div>
       <button type="submit" className="search-btn">
-        <img src="src/assets/search-btn.png" alt="" />
+        <img src="../assets/search-btn.png" alt="" />
       </button>
     </form>
   );
