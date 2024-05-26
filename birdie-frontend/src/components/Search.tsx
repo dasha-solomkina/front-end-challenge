@@ -1,8 +1,9 @@
+import { useState } from 'react';
+import imgT from '../assets/search.png';
+
 type SearchProps = {
   handleSearch: (inputValue: string) => void;
 };
-
-import { useState } from 'react';
 
 export default function Search({ handleSearch }: SearchProps) {
   const [typedInput, setTypedInput] = useState<string>('');
@@ -15,7 +16,7 @@ export default function Search({ handleSearch }: SearchProps) {
   return (
     <form onSubmit={onSubmit}>
       <div className="search-bar">
-        <img src="src/assets/search.png" alt="" />
+        <img src={imgT} alt="" />
         <input
           value={typedInput}
           type="text"
