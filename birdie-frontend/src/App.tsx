@@ -164,12 +164,20 @@ function App() {
       if (selection && selection.rangeCount > 0 && !selection.isCollapsed) {
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
-        setHighlightedText(selection.toString());
-        setButtonPosition({
-          left: rect.left + window.scrollX,
-          top: rect.top + window.scrollY,
-        });
-        setButtonVisible(true);
+
+        console.log(range);
+
+        if (
+          range.commonAncestorContainer.parentElement?.className ===
+          'feedback-text'
+        ) {
+          setHighlightedText(selection.toString());
+          setButtonPosition({
+            left: rect.left + rect.width / 2 - 37 + window.scrollX,
+            top: rect.top - 40 + window.scrollY,
+          });
+          setButtonVisible(true);
+        }
       } else {
         setButtonVisible(false);
       }

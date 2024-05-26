@@ -22,7 +22,7 @@ export default function AddTagBtn({
         }}
       >
         <button onClick={handleAddTag} id="highlight-button">
-          Action
+          Add Tag
         </button>
       </div>
     )

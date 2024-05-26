@@ -6,9 +6,11 @@
 }
 
 #root {
-  padding: 3.5%;
+  /* padding: 3.5%; */
+  padding-top: 50px;
+  padding-left: 4%;
   display: grid;
-  grid-template-rows: 50vh 50px 1fr;
+  grid-template-rows: 50vh 50px 40px 1fr;
   gap: 30px;
 }
 
@@ -20,7 +22,6 @@
 #main {
   max-width: 90%;
   min-height: 40vh;
-  border: 2px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,7 +122,6 @@ p {
   width: 40px;
   border: none;
   padding: 6px 10px;
-
   background-color: transparent;
   border-radius: 8px;
 }
@@ -146,6 +146,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 90%;
 }
 
 .page-back-btn.active,
@@ -212,6 +213,20 @@ button.active:hover {
 }
 .highlight-button-container {
   position: absolute;
+}
+
+#highlight-button {
+  background-color: #05495f;
+  color: white;
+  width: 74px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+}
+
+#highlight-button:hover {
+  cursor: pointer;
 }
 
 .tags-list {
