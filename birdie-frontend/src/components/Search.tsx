@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import imgT from '../assets/search.png';
+import imgSeachIcon from '../assets/search.png';
+import imgSeachBtn from '../assets/search-btn.png';
 
 type SearchProps = {
   handleSearch: (inputValue: string) => void;
@@ -16,7 +17,7 @@ export default function Search({ handleSearch }: SearchProps) {
   return (
     <form onSubmit={onSubmit}>
       <div className="search-bar">
-        <img src={imgT} alt="" />
+        <img src={imgSeachIcon} alt="" />
         <input
           value={typedInput}
           type="text"
@@ -25,7 +26,7 @@ export default function Search({ handleSearch }: SearchProps) {
         />
       </div>
       <button type="submit" className="search-btn">
-        <img src="../assets/search-btn.png" alt="" />
+        <img src={imgSeachBtn} alt="" />
       </button>
     </form>
   );
