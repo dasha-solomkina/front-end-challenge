@@ -1,6 +1,6 @@
 # Frontend Birdie Challenge
 
-This project was developed as part of the Birdie Frontend Challenge process to showcase my skills in frontend web technologies. The main goal was to create an intuitive and visually appealing user interface (UI) for managing customer feedback. The application is designed to be responsive, simple, and fluid, ensuring seamless user experience.
+This project was created as part of the Birdie Frontend Challenge to demonstrate proficiency in frontend web development. The primary objective was to craft an intuitive and visually appealing user interface (UI) for efficiently managing customer feedback. With a focus on responsiveness, simplicity, and fluidity, the application ensures a seamless user experience.
 
 ## Key Features
 
