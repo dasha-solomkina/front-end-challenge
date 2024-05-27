@@ -50,4 +50,4 @@ yarn dev
 
 ## Live project
 
-Here you can access the [live version of the project](https://front-end-challenge-5ckq8xvsh-dasha-solomkinas-projects.vercel.app/).
+Here you can access the [live version of the project](https://front-end-challenge-ten-brown.vercel.app/).
