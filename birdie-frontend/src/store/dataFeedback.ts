@@ -1,3 +1,5 @@
+import { get } from '../api';
+
 export type FeedbackDataProps = {
   text: string;
   title: string;
@@ -12,13 +14,23 @@ export type FeedbackListProps = {
   previousPage: number | null;
 };
 
+export type FetchFeedbackListParams = {
+  page: number;
+  pageSize: number;
+  search: string;
+};
+
 export default async function fetchFeedbackList(
-  url: string
+  params: FetchFeedbackListParams
 ): Promise<FeedbackListProps> {
   try {
-    const response = await fetch(url, {
-      mode: 'cors',
-    });
+    const qs = new URLSearchParams({
+      ...params,
+      page: params.page.toString(),
+      pageSize: params.pageSize.toString(),
+    }).toString();
+    const url = 'feedback?' + qs;
+    const response = await get(url);
 
     if (!response.ok) {
       throw new Error(

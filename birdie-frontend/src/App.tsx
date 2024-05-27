@@ -36,15 +36,16 @@ function App() {
   const handlePageSize = useCallback((num: number) => {
     setPageSize(num);
     setPageNumber(0);
-    const buttonPrev = document.querySelector('.page-back-btn');
-    buttonPrev?.classList.remove('active');
   }, []);
 
   useEffect(() => {
-    const url = `https://frontend-challenge.birdie.workers.dev/feedback?pageSize=${pageSize}&page=${pageNumber}&search=${search}`;
     const fetchData = async () => {
       try {
-        const data = await fetchFeedbackList(url);
+        const data = await fetchFeedbackList({
+          search,
+          page: pageNumber,
+          pageSize,
+        });
         const feedbackWithId = data.data.map((item) => ({
           ...item,
           id: uuidv4(),
@@ -60,40 +61,11 @@ function App() {
     fetchData();
   }, [pageNumber, search, pageSize]);
 
-  useEffect(() => {
-    const buttonForward = document.querySelector('.page-forward-btn');
-    const buttonPrev = document.querySelector('.page-back-btn');
-
-    if (fetchedFeedback && fetchedFeedback.count / pageSize < 1) {
-      buttonForward?.classList.remove('active');
-      buttonPrev?.classList.remove('active');
-    }
-    if (fetchedFeedback && fetchedFeedback.previousPage == null) {
-      buttonPrev?.classList.remove('active');
-    }
-    if (fetchedFeedback && fetchedFeedback.nextPage !== null) {
-      buttonForward?.classList.add('active');
-    }
-    if (fetchedFeedback && fetchedFeedback.previousPage !== null) {
-      buttonPrev?.classList.add('active');
-    }
-    if (
-      fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage ===
-        1
-    ) {
-      buttonForward?.classList.remove('active');
-    }
-  }, [fetchedFeedback, pageSize]);
-
   const handleNextPage = useCallback(() => {
-    if (
-      fetchedFeedback?.nextPage &&
-      Math.ceil(fetchedFeedback.count / pageSize) - fetchedFeedback.nextPage > 1
-    ) {
+    if (fetchedFeedback && fetchedFeedback.nextPage !== null) {
       setPageNumber((prevPage) => prevPage + 1);
     }
-  }, [fetchedFeedback, pageSize]);
+  }, [fetchedFeedback]);
 
   const handlePreviousPage = useCallback(() => {
     if (fetchedFeedback && fetchedFeedback.previousPage !== null) {
@@ -190,13 +162,18 @@ function App() {
     };
   }, []);
 
+  const lastPage = fetchedFeedback
+    ? Math.ceil(fetchedFeedback.count / pageSize)
+    : 1;
+
   return (
     <>
       <Chart />
       <Search handleSearch={handleSearch} />
       <div className="pages-block">
         <Pagination
-          page={pageNumber}
+          currentPage={pageNumber}
+          lastPage={lastPage}
           handleNextPage={handleNextPage}
           handlePreviousPage={handlePreviousPage}
         />

@@ -7,10 +7,10 @@ type FeedbackPerPageProps = {
 export default function FeedbackPerPage({
   handlePageSize,
 }: FeedbackPerPageProps) {
-  const [activeButon, setActiveSutton] = useState<number>(10);
+  const [activeButton, setActiveButton] = useState<number>(10);
 
   const handleClick = (size: number) => {
-    setActiveSutton(size);
+    setActiveButton(size);
     handlePageSize(size);
   };
 
@@ -18,19 +18,19 @@ export default function FeedbackPerPage({
     <div className="feedback-per-page">
       <button
         onClick={() => handleClick(10)}
-        className={activeButon === 10 ? 'active' : ''}
+        className={activeButton === 10 ? 'active' : ''}
       >
         10
       </button>
       <button
         onClick={() => handleClick(25)}
-        className={activeButon === 25 ? 'active' : ''}
+        className={activeButton === 25 ? 'active' : ''}
       >
         25
       </button>
       <button
         onClick={() => handleClick(100)}
-        className={activeButon === 100 ? 'active' : ''}
+        className={activeButton === 100 ? 'active' : ''}
       >
         100
       </button>

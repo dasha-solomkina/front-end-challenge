@@ -1,3 +1,5 @@
+import { get } from '../api';
+
 export type GraphDataProps = {
   date: string;
   count: number;
@@ -5,12 +7,7 @@ export type GraphDataProps = {
 
 export default async function fetchGraphArray(): Promise<GraphDataProps[]> {
   try {
-    const response = await fetch(
-      'https://frontend-challenge.birdie.workers.dev/trendline',
-      {
-        mode: 'cors',
-      }
-    );
+    const response = await get('trendline');
 
     if (!response.ok) {
       throw new Error(
