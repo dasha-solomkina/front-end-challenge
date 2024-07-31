@@ -1,4 +1,4 @@
-# Frontend Birdie Challenge
+# Feedback Analytics Screen
 
 This project was created as part of the Birdie Frontend Challenge to demonstrate proficiency in frontend web development. The primary objective was to craft an intuitive and visually appealing user interface (UI) for efficiently managing customer feedback. With a focus on responsiveness, simplicity, and fluidity, the application ensures a seamless user experience.
 
