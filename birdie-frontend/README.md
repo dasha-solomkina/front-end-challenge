@@ -2,6 +2,9 @@
 
 This project was created as part of the Birdie Frontend Challenge to demonstrate proficiency in frontend web development. The primary objective was to craft an intuitive and visually appealing user interface (UI) for efficiently managing customer feedback. With a focus on responsiveness, simplicity, and fluidity, the application ensures a seamless user experience.
 
+<img src="https://github.com/user-attachments/assets/00396a54-cd65-4b8d-800a-822c5d7f6175" alt="image" width="500"/>
+<img src="https://github.com/user-attachments/assets/0d4b8d0e-99dd-427f-8b7a-d8af91229fff" alt="image" width="500"/>
+
 ## Key Features
 
 - **Feedback Management**: Easily view, search, and navigate through all customer feedback entries.
@@ -51,9 +54,3 @@ yarn dev
 ## Live project
 
 Here you can access the [live version of the project](https://front-end-challenge-ten-brown.vercel.app/).
-
-
-</br>
-
-<img src="https://github.com/user-attachments/assets/00396a54-cd65-4b8d-800a-822c5d7f6175" alt="image" width="500"/>
-<img src="https://github.com/user-attachments/assets/0d4b8d0e-99dd-427f-8b7a-d8af91229fff" alt="image" width="500"/>
